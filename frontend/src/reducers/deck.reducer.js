@@ -95,9 +95,6 @@ export const deckSlice = createSlice({
       .addCase(createDeck.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createDeck.pending, (state) => {
-        state.isLoading = true;
-      })
       .addCase(createDeck.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
