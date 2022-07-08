@@ -4,7 +4,7 @@ This is the LOR image store app
 
 ## Usage
 
-<!-- Rename the .envexample to .env and add your MONGO_URI -->
+Rename the .envexample to .env and your variable
 
 ### Install dependencies
 
