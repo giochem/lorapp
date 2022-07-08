@@ -1,0 +1,6 @@
+MONGO_URI=mongodb+srv://<my-url-mongoDB>
+JWT_SECRET=jwt-example
+CLOUDINARY_CLOUD_NAME=my_clound_name
+CLOUDINARY_API_KEY=my_api_key
+CLOUDINARY_API_SECRET=my_api_secret
+NODE_ENV=developer
