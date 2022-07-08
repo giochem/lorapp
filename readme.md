@@ -1,6 +1,6 @@
 # LOR MERN app
 
-This is the LOP image app
+This is the LOR image store app
 
 ## Usage
 
