@@ -1,6 +1,6 @@
 export default function Register() {
   const authGoogle = () => {
-    window.open('http://localhost:8080/api/v2/auth/google', '_self');
+    window.open('/api/v2/auth/google', '_self');
   };
   return (
     <>
