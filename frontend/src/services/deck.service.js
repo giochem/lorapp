@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = `/api/v1/decks`;
+const API_URL = `/api/v2/decks`;
 
 // get all decks public
 const getAllDecksPublic = async () => {

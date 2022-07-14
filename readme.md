@@ -1,4 +1,4 @@
-# LOR MERN app
+# LOR MERN WEB
 
 This is the LOR image store app
 

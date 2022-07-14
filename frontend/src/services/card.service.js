@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = `/api/v1/cards`;
+const API_URL = `/api/v2/cards`;
 
 // get cards of user
 const getAllCardsUser = async (token) => {

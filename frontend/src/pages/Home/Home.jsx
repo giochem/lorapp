@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getAllDecksPublic, likeDeck, reset } from '../../reducers/deck.reducer';
 
 export default function Home() {
+  const navigate = useNavigate();
   const { decks, isError, isLoading, message } = useSelector((state) => state.decks) || {};
   const dispatch = useDispatch();
   const [modal, setModal] = useState({
@@ -13,12 +15,13 @@ export default function Home() {
   useEffect(() => {
     if (isError) {
       console.log(message);
+      navigate('/login');
     }
     dispatch(getAllDecksPublic());
     return () => {
       dispatch(reset());
     };
-  }, [isError, message, dispatch]);
+  }, [isError, message, dispatch, navigate]);
   const handleLikeDeck = (id, like) => (e) => {
     e.preventDefault();
 

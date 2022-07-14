@@ -10,7 +10,7 @@ const initialState = {
 };
 export const getAllCardsUser = createAsyncThunk('cards/getAllCardsUser', async (_, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().user.user.token;
+    const token = JSON.parse(sessionStorage.getItem('token'));
     return await cardService.getAllCardsUser(token);
   } catch (error) {
     const message =
@@ -20,7 +20,7 @@ export const getAllCardsUser = createAsyncThunk('cards/getAllCardsUser', async (
 });
 export const createCard = createAsyncThunk('cards/createCard', async (card, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().user.user.token;
+    const token = JSON.parse(sessionStorage.getItem('token'));
     return await cardService.createCard(token, card);
   } catch (error) {
     const message =
@@ -30,7 +30,7 @@ export const createCard = createAsyncThunk('cards/createCard', async (card, thun
 });
 export const deleteCard = createAsyncThunk('cards/deleteCard', async (cardId, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().user.user.token;
+    const token = JSON.parse(sessionStorage.getItem('token'));
     return await cardService.deleteCard(token, cardId);
   } catch (error) {
     const message =
@@ -79,7 +79,7 @@ export const cardSlice = createSlice({
       .addCase(deleteCard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.cards = state.cards.filter((e) => e._id !== action.payload.id);
+        state.cards = state.cards.filter((e) => e._id !== action.payload._id);
       })
       .addCase(deleteCard.rejected, (state, action) => {
         state.isLoading = false;

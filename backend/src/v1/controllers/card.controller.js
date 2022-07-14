@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
-const cloudinary = require('../config/cloudinary');
+const cloudinary = require('../../config/cloudinary');
 const Card = require('../models/card.model');
-const upload = require('../config/multer');
+const upload = require('../../config/multer');
 // @desc    upload card
 // @route   POST /api/v1/cards/me
 // @access  Private
@@ -26,16 +26,7 @@ const uploadCard = asyncHandler(async (req, res) => {
 // @desc    get all card
 // @route   GET /api/v1/cards
 // @access  Private
-// // const getAllCards = asyncHandler(async (req, res) => {
-// //   Card.find({}, (err, images) => {
-// //     if (err) {
-// //       console.log(err);
-// //       res.status(500).send('An error occurred', err);
-// //     } else {
-// //       res.json(images);
-// //     }
-// //   });
-// // });
+
 // @desc    get cards of user
 // @route   GET /api/v1/cards/me
 // @access  Private
@@ -71,7 +62,7 @@ const deleteCard = asyncHandler(async (req, res) => {
   // delete image form mongodb
   await card.remove();
 
-  res.status(200).json({ id: req.params.id });
+  res.status(200).json(card);
 });
 
 module.exports = { uploadCard, getCardsUser, deleteCard };
