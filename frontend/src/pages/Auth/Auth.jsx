@@ -8,7 +8,7 @@ export default function Auth() {
   const [cookies] = useCookies();
   useEffect(() => {
     if (!cookies.accessToken) {
-      navigate('/login');
+      navigate('/error');
     }
 
     sessionStorage.setItem('token', JSON.stringify(cookies.accessToken));

@@ -1,7 +1,12 @@
-export default function Register() {
-  const authGoogle = () => {
-    window.open('http://localhost:8080/api/v2/auth/google', '_self');
+export default function Login() {
+  const authGoogle = async () => {
+    try {
+      window.open('/api/v2/auth/google', '_self');
+    } catch (error) {
+      console.log('🚀 ~ file: Login.jsx ~ line 51 ~ authGoogle ~ error', error);
+    }
   };
+
   return (
     <>
       <section className="hero is-success is-fullheight">
@@ -10,7 +15,7 @@ export default function Register() {
             <div className="column is-4 is-offset-4">
               <h3 className="title has-text-black">Register</h3>
               <hr className="login-hr" />
-              <p className="subtitle has-text-black">Please register to proceed...</p>
+              <p className="subtitle has-text-black">Please register to proceed.</p>
               <div className="box">
                 <button className="button is-block is-info is-large is-fullwidth" onClick={authGoogle}>
                   Google
