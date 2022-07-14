@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../config/multer');
+const upload = require('../../config/multer');
 
 const { verifyToken } = require('../middleware/verifyToken.middleware');
 const { uploadCard, getCardsUser, deleteCard } = require('../controllers/card.controller');

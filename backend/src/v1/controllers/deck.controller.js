@@ -65,6 +65,6 @@ const deleteDeckUser = asyncHandler(async (req, res) => {
     throw new Error('User not authorized');
   }
   await deck.remove();
-  res.status(200).json({ id: req.params.id });
+  res.status(200).json(deck);
 });
 module.exports = { createDeck, getAllDecksPublic, setDeckPublic, getDecksUser, deleteDeckUser };

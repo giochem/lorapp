@@ -1,0 +1,6 @@
+GET http://localhost:5000/api/v2/users/auth/facebook
+# Content-Type: application/json
+
+# {
+
+# }

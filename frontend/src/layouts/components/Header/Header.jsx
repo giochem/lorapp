@@ -1,18 +1,21 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import routes from '../../../config/routes';
-import { logout } from '../../../reducers/user.reducer';
 export default function Header() {
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const user = sessionStorage.getItem('token');
   const [mobileNav, setMobileNav] = useState(false);
-  const onLogout = () => {
-    dispatch(logout());
-  };
+
   const handleClick = (e) => {
     e.preventDefault();
     setMobileNav(!mobileNav);
+  };
+  const onLogoutMultiplePage = () => {
+    window.localStorage.setItem('logout', Date.now());
+    navigate('/creator');
+    localStorage.removeItem('logout');
+    sessionStorage.removeItem('token');
+    console.log('local::', localStorage.getItem('logout'), 'session:: ', sessionStorage.getItem('token'));
   };
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -35,13 +38,16 @@ export default function Header() {
           <Link to={routes.creator} className="navbar-item">
             Creator
           </Link>
+          <Link to={routes.store} className="navbar-item">
+            Store
+          </Link>
         </div>
 
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
               {user ? (
-                <button className="button is-primary" onClick={onLogout}>
+                <button className="button is-primary" onClick={onLogoutMultiplePage}>
                   Logout
                 </button>
               ) : (

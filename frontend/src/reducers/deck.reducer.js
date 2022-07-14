@@ -20,7 +20,7 @@ export const getAllDecksPublic = createAsyncThunk('decks/getAllDecksPublic', asy
 });
 export const createDeck = createAsyncThunk('decks/createDeck', async (data, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().user.user.token;
+    const token = JSON.parse(sessionStorage.getItem('token'));
     return await deckService.createDeck(token, data);
   } catch (error) {
     const message =
@@ -39,7 +39,7 @@ export const likeDeck = createAsyncThunk('decks/likeDeck', async (data, thunkAPI
 });
 export const getDecksUser = createAsyncThunk('decks/getDecksUser', async (_, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().user.user.token;
+    const token = JSON.parse(sessionStorage.getItem('token'));
     return await deckService.getDecksUser(token);
   } catch (error) {
     const message =
@@ -49,7 +49,7 @@ export const getDecksUser = createAsyncThunk('decks/getDecksUser', async (_, thu
 });
 export const deleteDeckUser = createAsyncThunk('decks/deleteDeckUser', async (deckId, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().user.user.token;
+    const token = JSON.parse(sessionStorage.getItem('token'));
     return await deckService.deleteDeck(token, deckId);
   } catch (error) {
     const message =
@@ -57,7 +57,6 @@ export const deleteDeckUser = createAsyncThunk('decks/deleteDeckUser', async (de
     return thunkAPI.rejectWithValue(message);
   }
 });
-
 export const deckSlice = createSlice({
   name: 'deck',
   initialState,
@@ -125,7 +124,7 @@ export const deckSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         //!!! fix bug
-        state.decks = state.filter((deck) => deck._id !== action.payload._id);
+        state.decks = state.decks.filter((deck) => deck._id !== action.payload._id);
       })
       .addCase(deleteDeckUser.rejected, (state, action) => {
         state.isLoading = false;

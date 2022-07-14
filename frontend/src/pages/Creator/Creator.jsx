@@ -5,7 +5,7 @@ import { createDeck } from '../../reducers/deck.reducer';
 
 export default function Creator() {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user) || {};
+  const user = sessionStorage.getItem('token');
   const { cards, isError, isLoading, message } = useSelector((state) => state.cards) || {};
   const [form, setForm] = useState({
     name: '',
@@ -82,7 +82,7 @@ export default function Creator() {
       {!isLoading && (
         <>
           <article className="panel is-success">
-            <p className="panel-heading">Card</p>
+            <p className="box panel-heading">Card</p>
             <div className="mb-3">
               <input
                 className="input is-success"
@@ -118,22 +118,26 @@ export default function Creator() {
             </div>
           </article>
           <article className="panel is-success">
-            <p className="panel-heading">Deck</p>
-            <input
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              className="input is-success"
-              type="text"
-              placeholder="Deck Name"
-            />
-            <input
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
-              className="input is-link"
-              type="text"
-              placeholder="Link Deck"
-            />
+            <p className="box panel-heading">Deck</p>
+            <div className="mb-3">
+              <input
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                className="input is-success"
+                type="text"
+                placeholder="Deck Name"
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+                className="input is-link"
+                type="text"
+                placeholder="Link Deck"
+              />
+            </div>
             {form.links.map((e, index) => (
               <div key={index} className="notification is-link">
                 <button className="delete"></button>
@@ -170,7 +174,7 @@ export default function Creator() {
             </div>
           </article>
           <article className="panel is-warning">
-            <p className="panel-heading">Card User</p>
+            <p className="box panel-heading">Card User</p>
             <div className="panel-block">
               <p className="control has-icons-left">
                 <input className="input" type="text" placeholder="Search" />
