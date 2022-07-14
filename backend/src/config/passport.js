@@ -5,7 +5,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: '/api/v2/auth/google/callback',
+      callbackURL: 'https://lor-app-v2.herokuapp.com/api/v2/auth/google/callback',
     },
     function (accessToken, refreshToken, profile, done) {
       done(null, { accessToken, refreshToken, profile });
