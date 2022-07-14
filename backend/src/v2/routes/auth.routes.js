@@ -8,8 +8,8 @@ const { cookie, verifyToken } = require('../middleware/protect.middleware');
 const { findUserById } = require('../services/user.service');
 
 router.get('/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
-
-router.get('/google/callback', passport.authenticate('google'), generate, (req, res, next) => {
+//!!passport.authenticate('google'),
+router.get('/google/callback', generate, (req, res, next) => {
   res.redirect('https://lor-app-v2.herokuapp.com/auth');
 });
 
