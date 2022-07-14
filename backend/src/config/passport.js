@@ -6,6 +6,8 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: '/api/v2/auth/google/callback',
+      proxy: true,
+      passport: true,
     },
     function (accessToken, refreshToken, profile, done) {
       done(null, { accessToken, refreshToken, profile });
