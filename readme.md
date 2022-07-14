@@ -4,6 +4,8 @@ This is the LOR image store app
 
 ## Usage
 
+"proxy": "http://localhost:8080",
+
 Rename the .envexample to .env and your variable
 
 ### Install dependencies

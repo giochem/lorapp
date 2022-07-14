@@ -16,7 +16,6 @@ module.exports = {
       const accessToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: EXPIRATION_MINUTES,
       });
-
       const refreshToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_REFRESH);
 
       res.cookie('fingerprint', fingerprint, { httpOnly: true });

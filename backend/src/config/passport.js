@@ -5,7 +5,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:8080/api/v2/auth/google/callback',
+      callbackURL: '/api/v2/auth/google/callback',
     },
     function (accessToken, refreshToken, profile, done) {
       done(null, { accessToken, refreshToken, profile });
@@ -19,10 +19,9 @@ passport.serializeUser((user, done) => {
     refreshToken: user.refreshToken,
     id: user.profile.id,
     name: user.profile.displayName,
-    iat: Date.now().toString(),
   });
 });
 
-passport.deserializeUser((user, done) => {
+passport.deserializeUser((req, user, done) => {
   done(null, user);
 });

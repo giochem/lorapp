@@ -4,7 +4,6 @@ module.exports = {
   google: async (data) => {
     try {
       const userExist = await User.findOne({ googleId: data.id });
-
       if (userExist) {
         return userExist;
       }
