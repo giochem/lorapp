@@ -41,4 +41,4 @@ npm run dev
 
 I am not sure how long this will be up
 
-https://lorapp.herokuapp.com/
+https://lor-web.herokuapp.com/
