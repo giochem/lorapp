@@ -10,7 +10,7 @@ const initialState = {
 };
 export const getAllCardsUser = createAsyncThunk('cards/getAllCardsUser', async (_, thunkAPI) => {
   try {
-    const token = JSON.parse(sessionStorage.getItem('token'));
+    const token = thunkAPI.getState().user.user.token;
     return await cardService.getAllCardsUser(token);
   } catch (error) {
     const message =
@@ -20,7 +20,7 @@ export const getAllCardsUser = createAsyncThunk('cards/getAllCardsUser', async (
 });
 export const createCard = createAsyncThunk('cards/createCard', async (card, thunkAPI) => {
   try {
-    const token = JSON.parse(sessionStorage.getItem('token'));
+    const token = thunkAPI.getState().user.user.token;
     return await cardService.createCard(token, card);
   } catch (error) {
     const message =
@@ -30,7 +30,7 @@ export const createCard = createAsyncThunk('cards/createCard', async (card, thun
 });
 export const deleteCard = createAsyncThunk('cards/deleteCard', async (cardId, thunkAPI) => {
   try {
-    const token = JSON.parse(sessionStorage.getItem('token'));
+    const token = thunkAPI.getState().user.user.token;
     return await cardService.deleteCard(token, cardId);
   } catch (error) {
     const message =

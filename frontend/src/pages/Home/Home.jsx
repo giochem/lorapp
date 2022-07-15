@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     if (isError) {
       console.log(message);
-      navigate('/login');
+      navigate('/error');
     }
     dispatch(getAllDecksPublic());
     return () => {

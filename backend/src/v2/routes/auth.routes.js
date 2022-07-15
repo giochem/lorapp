@@ -2,9 +2,15 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const { login, register } = require('../controllers/user.controller');
 const { generate } = require('../middleware/generate.middleware');
 const { cookie, verifyToken } = require('../middleware/protect.middleware');
 const { findUserById } = require('../services/user.service');
+
+router.post('/login', login);
+router.post('/register', register, (req, res, next) => {
+  res.sen('success');
+});
 
 router.get('/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
 

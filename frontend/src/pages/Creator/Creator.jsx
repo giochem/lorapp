@@ -5,7 +5,7 @@ import { createDeck } from '../../reducers/deck.reducer';
 
 export default function Creator() {
   const dispatch = useDispatch();
-  const user = sessionStorage.getItem('token');
+  const { user } = useSelector((state) => state.user);
   const { cards, isError, isLoading, message } = useSelector((state) => state.cards) || {};
   const [form, setForm] = useState({
     name: '',

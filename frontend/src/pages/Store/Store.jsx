@@ -6,13 +6,12 @@ import { getDecksUser, deleteDeckUser, reset } from '../../reducers/deck.reducer
 export default function Store() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = sessionStorage.getItem('token');
+  const { user } = useSelector((state) => state.user);
   const { decks, isError, isLoading, message } = useSelector((state) => state.decks) || {};
 
   useEffect(() => {
     if (isError) {
       console.log(message);
-      navigate('/login');
     }
     if (user) {
       dispatch(getDecksUser());

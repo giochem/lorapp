@@ -4,11 +4,18 @@ const userSchema = Schema(
   {
     name: {
       type: String,
-      unqiue: true,
     },
     googleId: {
       type: String,
       unqiue: true,
+    },
+    // basic
+    email: {
+      type: String,
+      unqiue: true,
+    },
+    password: {
+      type: String,
     },
   },
   {

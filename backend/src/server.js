@@ -43,9 +43,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use('/api/v1', require('./v1/routes/index'));
+app.use('/api/v1', require('./v1/routes/index'));
 
-app.use('/api/v2', require('./v2/routes/index'));
+// app.use('/api/v2', require('./v2/routes/index'));
 // Server frontend
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../../frontend/build')));

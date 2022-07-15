@@ -20,7 +20,7 @@ export const getAllDecksPublic = createAsyncThunk('decks/getAllDecksPublic', asy
 });
 export const createDeck = createAsyncThunk('decks/createDeck', async (data, thunkAPI) => {
   try {
-    const token = JSON.parse(sessionStorage.getItem('token'));
+    const token = thunkAPI.getState().user.user.token;
     return await deckService.createDeck(token, data);
   } catch (error) {
     const message =
@@ -39,7 +39,7 @@ export const likeDeck = createAsyncThunk('decks/likeDeck', async (data, thunkAPI
 });
 export const getDecksUser = createAsyncThunk('decks/getDecksUser', async (_, thunkAPI) => {
   try {
-    const token = JSON.parse(sessionStorage.getItem('token'));
+    const token = thunkAPI.getState().user.user.token;
     return await deckService.getDecksUser(token);
   } catch (error) {
     const message =
@@ -49,7 +49,7 @@ export const getDecksUser = createAsyncThunk('decks/getDecksUser', async (_, thu
 });
 export const deleteDeckUser = createAsyncThunk('decks/deleteDeckUser', async (deckId, thunkAPI) => {
   try {
-    const token = JSON.parse(sessionStorage.getItem('token'));
+    const token = thunkAPI.getState().user.user.token;
     return await deckService.deleteDeck(token, deckId);
   } catch (error) {
     const message =

@@ -4,6 +4,7 @@ const { google } = require('../services/auth.service');
 const { findUserByGoogleId } = require('../services/user.service');
 
 const EXPIRATION_MINUTES = 1 * 60;
+
 module.exports = {
   generate: async (req, res, next) => {
     try {
