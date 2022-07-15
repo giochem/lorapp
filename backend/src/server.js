@@ -3,8 +3,8 @@ const dotenv = require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
-const passportSetup = require('./config/passport');
-const passport = require('passport');
+// const passportSetup = require('./config/passport');
+// const passport = require('passport');
 const RedisStore = require('connect-redis')(session);
 const compression = require('compression');
 const connectDB = require('./config/mongodb');
@@ -25,23 +25,23 @@ app.use(
     threshold: 100 * 1000,
   })
 );
-app.use(
-  session({
-    secret: 'keyboard cat',
-    store: new RedisStore({
-      client: redisClient,
-    }),
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: false,
-      httpOnly: true,
-      maxAge: 5 * 60 * 1000,
-    },
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(
+//   session({
+//     secret: 'keyboard cat',
+//     store: new RedisStore({
+//       client: redisClient,
+//     }),
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//       secure: false,
+//       httpOnly: true,
+//       maxAge: 5 * 60 * 1000,
+//     },
+//   })
+// );
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use('/api/v1', require('./v1/routes/index'));
 
